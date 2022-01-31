@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PatientsOfHcmc</title>
+</head>
+<body>
+<div>
+    <nav>
+        <a href="/home"> Home </a> |
+        <a href="/patients"> Patients </a> |
+        <a href="/hcmcweb/api/patient/list"> List-RestApi </a>
+    </nav>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Patient Number</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">isAnOutPatient</th>
+        <th scope="col">PhoneNumber</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date Of Birth</th>
+    </tr>
+    </thead>
+    <tbody>
+     <tr th:each="patient,counter : ${patientsList}">
+        <!--th:onclick="@{document.location='/elibrary/book/edit/{bookId}'(bookId=${book.bookId})}" -->
+        <th scope="row" th:text="${counter.count}+${'.'}"></th>
+        <td th:text="${patient.patientNo}"></td>
+        <td th:text="${patient.fullName}"></td>
+         <td th:text="${patient.anOutPatient}"></td>
+        <td th:text="${patient.contactPhoneNumber}"></td>
+        <td th:text="${patient.emailAddress}"></td>
+        <td th:text="${patient.dateOfBirth}"></td>
+    </tbody>
+</table>
+
+</body>
+</html>
